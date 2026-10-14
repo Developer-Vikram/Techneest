@@ -1,0 +1,424 @@
+@import "aos/dist/aos.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #0b1028;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root,
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  ::selection {
+    background-color: #075bff;
+    color: #ffffff;
+  }
+}
+
+@layer utilities {
+  /* Brand text gradient */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #00d9f5 0%, #075bff 50%, #6d28d9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-vivid {
+    background: linear-gradient(135deg, #075bff 0%, #6d28d9 60%, #e83ebd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(135deg, #ff8a35 0%, #e83ebd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Subtle ambient mesh background */
+  .bg-radial-brand {
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(7, 91, 255, 0.08) 0%,
+      rgba(0, 217, 245, 0.03) 40%,
+      transparent 70%
+    );
+  }
+
+  .bg-radial-navy {
+    background: radial-gradient(
+      circle at 50% 20%,
+      #141d3b 0%,
+      #0b1028 60%,
+      #060a1c 100%
+    );
+  }
+}
+
+/* =========================================================================
+   BUTTON FILL HOVER EFFECT (Corner-origin liquid gradient expansion)
+   ========================================================================= */
+
+/* Primary CTA Button: Liquid gradient fills from bottom-left corner */
+.btn-fill-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 0.75rem; /* 12px */
+  color: #ffffff;
+  background-color: #0b1028;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  isolation: isolate;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px -2px rgba(11, 16, 40, 0.2);
+}
+
+.btn-fill-primary::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, #00d9f5 0%, #075bff 50%, #6d28d9 100%);
+  border-radius: inherit;
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+
+.btn-fill-primary:hover::before,
+.btn-fill-primary:focus-visible::before {
+  transform: scale(1);
+}
+
+.btn-fill-primary:hover {
+  box-shadow: 0 10px 25px -4px rgba(7, 91, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-fill-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-fill-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(7, 91, 255, 0.4);
+}
+
+/* Secondary CTA Button: Clean border, fills with soft ambient tone */
+.btn-fill-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  color: #0b1028;
+  background-color: #ffffff;
+  border: 1.5px solid #e7eaf2;
+  overflow: hidden;
+  isolation: isolate;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-fill-secondary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 217, 245, 0.1) 0%,
+    rgba(7, 91, 255, 0.12) 60%,
+    rgba(109, 40, 217, 0.14) 100%
+  );
+  border-radius: inherit;
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+
+.btn-fill-secondary:hover::before,
+.btn-fill-secondary:focus-visible::before {
+  transform: scale(1);
+}
+
+.btn-fill-secondary:hover {
+  border-color: #075bff;
+  color: #075bff;
+  box-shadow: 0 4px 16px -2px rgba(7, 91, 255, 0.12);
+}
+
+.btn-fill-secondary:active {
+  transform: scale(0.98);
+}
+
+.btn-fill-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(7, 91, 255, 0.3);
+}
+
+/* White CTA Button: For dark navy backgrounds */
+.btn-fill-white {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  color: #0b1028;
+  background-color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  isolation: isolate;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-fill-white::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #00d9f5 0%, #075bff 100%);
+  border-radius: inherit;
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+
+.btn-fill-white:hover::before,
+.btn-fill-white:focus-visible::before {
+  transform: scale(1);
+}
+
+.btn-fill-white:hover {
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 8px 24px -2px rgba(0, 217, 245, 0.4);
+}
+
+.btn-fill-white:active {
+  transform: scale(0.98);
+}
+
+/* Ensure inner contents sit above pseudo-element */
+.btn-fill-primary > *,
+.btn-fill-secondary > *,
+.btn-fill-white > * {
+  position: relative;
+  z-index: 2;
+  transition: color 0.2s ease;
+}
+
+/* Respect user motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .btn-fill-primary::before,
+  .btn-fill-secondary::before,
+  .btn-fill-white::before,
+  .card-liquid-fill::before,
+  .card-liquid-fill-dark::before {
+    transition: none !important;
+  }
+
+  [data-aos] {
+    transition-property: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* =========================================================================
+   AOS REVEAL ANIMATIONS OPTIMIZATION (Mobile Overflow & Distance Clamping)
+   ========================================================================= */
+
+@media (max-width: 768px) {
+  [data-aos="fade-left"] {
+    transform: translate3d(24px, 0, 0) !important;
+  }
+  [data-aos="fade-right"] {
+    transform: translate3d(-24px, 0, 0) !important;
+  }
+  [data-aos="fade-up"] {
+    transform: translate3d(0, 24px, 0) !important;
+  }
+  [data-aos="fade-down"] {
+    transform: translate3d(0, -24px, 0) !important;
+  }
+  [data-aos].aos-animate {
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+/* =========================================================================
+   CARD LIQUID FILL HOVER EFFECT (Corner-origin expanding wave for cards)
+   ========================================================================= */
+
+.card-liquid-fill {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-liquid-fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 217, 245, 0.08) 0%,
+    rgba(7, 91, 255, 0.1) 50%,
+    rgba(109, 40, 217, 0.12) 100%
+  );
+  border-radius: inherit;
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card-liquid-fill:hover::before,
+.card-liquid-fill:focus-within::before {
+  transform: scale(1);
+}
+
+.card-liquid-fill:hover {
+  border-color: rgba(7, 91, 255, 0.35);
+  box-shadow: 0 12px 30px -8px rgba(7, 91, 255, 0.14);
+}
+
+.card-liquid-fill:active {
+  transform: scale(0.99);
+}
+
+.card-liquid-fill > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Card liquid fill for dark sections */
+.card-liquid-fill-dark {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-liquid-fill-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 217, 245, 0.14) 0%,
+    rgba(7, 91, 255, 0.18) 50%,
+    rgba(109, 40, 217, 0.22) 100%
+  );
+  border-radius: inherit;
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card-liquid-fill-dark:hover::before,
+.card-liquid-fill-dark:focus-within::before {
+  transform: scale(1);
+}
+
+.card-liquid-fill-dark:hover {
+  border-color: rgba(0, 217, 245, 0.45);
+  box-shadow: 0 14px 34px -8px rgba(7, 91, 255, 0.3);
+}
+
+.card-liquid-fill-dark:active {
+  transform: scale(0.99);
+}
+
+.card-liquid-fill-dark > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================================
+   PARTICLE WAVE BACKGROUND IMAGE VISUAL ON LIGHT BACKGROUND
+   Exact URL: https://i.ibb.co/m3k40pK/Image-2.png
+   Rule: Never used on dark/black backgrounds. Rendered on white/off-white/#F8FAFD
+   with multiply blend and inverted hues so particles appear vivid on light surfaces.
+   ========================================================================= */
+
+.bg-particle-wave {
+  position: relative;
+  background-color: #f8fafd;
+  overflow: hidden;
+}
+
+.bg-particle-wave::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    url("https://i.ibb.co/m3k40pK/Image-2.png"),
+    url("./assets/particle-wave.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: invert(1) hue-rotate(180deg) contrast(1.18) saturate(1.4);
+  mix-blend-mode: multiply;
+  opacity: 0.72;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .bg-particle-wave::before {
+    background-position: center top;
+    opacity: 0.76;
+  }
+}
+
+.bg-particle-wave > * {
+  position: relative;
+  z-index: 1;
+}
+
+.bg-particle-wave-white {
+  background-color: #ffffff !important;
+}
+
+.bg-particle-wave-soft {
+  background-color: #f6f8fc !important;
+}
+
+.bg-particle-wave-blue {
+  background-color: #eef5ff !important;
+}
+
+@media (hover: none) {
+  .card-liquid-fill:active::before,
+  .card-liquid-fill-dark:active::before {
+    transform: scale(1);
+  }
+}
