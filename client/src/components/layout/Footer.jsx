@@ -209,7 +209,7 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex items-center justify-start gap-3 sm:gap-2.5 pt-2 flex-wrap">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/143997548/admin/dashboard/"
                 target="_blank"
                 rel="noreferrer"
                 className="group w-10 h-10 sm:w-9 sm:h-9 rounded-xl sm:rounded-xl flex items-center justify-center bg-white/5 sm:bg-transparent text-slate-400 hover:bg-[#0A66C2] hover:text-white transition-all duration-300"
@@ -255,7 +255,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/techneesttechnology"
                 target="_blank"
                 rel="noreferrer"
                 className="group w-10 h-10 sm:w-9 sm:h-9 rounded-xl sm:rounded-xl flex items-center justify-center bg-white/5 sm:bg-transparent text-slate-400 hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:text-white transition-all duration-300"
@@ -271,7 +271,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://youtube.com"
+                href="https://youtube.com/@techneesttechnology?si=j8W2kcNaM28F871Y"
                 target="_blank"
                 rel="noreferrer"
                 className="group w-10 h-10 sm:w-9 sm:h-9 rounded-xl sm:rounded-xl flex items-center justify-center bg-white/5 sm:bg-transparent text-slate-400 hover:bg-[#FF0000] hover:text-white transition-all duration-300"
