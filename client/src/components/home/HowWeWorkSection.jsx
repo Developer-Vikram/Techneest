@@ -78,7 +78,7 @@ const workflowPillars = [
 
 export default function HowWeWorkSection() {
   return (
-    <section className="py-12 sm:py-16 bg-white border-t border-slate-100 relative">
+    <section className="py-8 sm:py-12 lg:py-16 bg-white border-t border-slate-100 relative">
       <div className="mx-auto w-full max-w-[105rem] px-4 sm:px-6 lg:px-8">
         <div data-aos="fade-up">
           <SectionHeading
@@ -87,11 +87,11 @@ export default function HowWeWorkSection() {
             gradientWord="Client-Centric"
             description="Our engineering workflow is built on direct communication, iterative working software, and absolute clarity from kickoff to deployment."
             align="center"
-            className="mb-10 sm:mb-12"
+            className="mb-7 sm:mb-10 lg:mb-12"
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {workflowPillars.map((p, idx) => {
             const Icon = p.icon;
             return (
@@ -99,16 +99,16 @@ export default function HowWeWorkSection() {
                 key={p.step}
                 data-aos="fade-up"
                 data-aos-delay={idx * 70}
-                className={`p-5 sm:p-7 rounded-3xl border transition-all duration-300 flex flex-col justify-between ${
+                className={`p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl border transition-all duration-300 flex flex-col justify-between ${
                   idx === 0
                     ? "card-liquid-fill-dark bg-gradient-to-br from-[#0B1028] to-[#141D3B] text-white border-brand-navy shadow-lg"
                     : "card-liquid-fill bg-[#F8FAFD] border-slate-200 text-[#0B1028] hover:bg-white hover:border-blue-200 hover:shadow-card"
                 }`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center justify-between mb-4 sm:mb-5">
                     <span
-                      className={`text-xs font-mono font-extrabold px-3 py-1 rounded-full ${
+                      className={`text-[10px] sm:text-xs font-mono font-extrabold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full ${
                         idx === 0
                           ? "bg-white/10 text-brand-cyan border border-white/10"
                           : "bg-blue-50 text-brand-electric border border-blue-100"
@@ -117,25 +117,25 @@ export default function HowWeWorkSection() {
                       Step {p.step}
                     </span>
                     <div
-                      className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center ${
                         idx === 0
                           ? "bg-white/10 text-brand-cyan"
                           : "bg-white text-brand-electric shadow-xs"
                       }`}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                   </div>
 
                   <h3
-                    className={`text-lg sm:text-xl font-bold mb-1 ${
+                    className={`text-base sm:text-lg lg:text-xl font-bold mb-1 leading-snug ${
                       idx === 0 ? "text-white" : "text-[#0B1028]"
                     }`}
                   >
                     {p.title}
                   </h3>
                   <p
-                    className={`text-xs font-semibold uppercase tracking-wider mb-3 ${
+                    className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2.5 sm:mb-3 ${
                       idx === 0 ? "text-brand-cyan" : "text-brand-electric"
                     }`}
                   >
@@ -143,7 +143,7 @@ export default function HowWeWorkSection() {
                   </p>
 
                   <p
-                    className={`text-xs sm:text-sm leading-relaxed mb-6 ${
+                    className={`text-[11px] sm:text-sm leading-relaxed mb-4 sm:mb-6 ${
                       idx === 0 ? "text-slate-300" : "text-[#59647D]"
                     }`}
                   >
@@ -152,17 +152,17 @@ export default function HowWeWorkSection() {
                 </div>
 
                 <div
-                  className={`pt-4 border-t space-y-2 ${
+                  className={`pt-3 sm:pt-4 border-t space-y-1.5 sm:space-y-2 ${
                     idx === 0 ? "border-white/10" : "border-slate-200"
                   }`}
                 >
                   {p.highlights.map((item, hIdx) => (
                     <div
                       key={hIdx}
-                      className="flex items-center gap-2 text-xs font-medium"
+                      className="flex items-start sm:items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium"
                     >
                       <CheckCircle2
-                        className={`w-3.5 h-3.5 shrink-0 ${
+                        className={`w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 mt-0.5 sm:mt-0 ${
                           idx === 0 ? "text-brand-cyan" : "text-emerald-500"
                         }`}
                       />

@@ -1,44 +1,49 @@
 import {
-  ShieldCheck,
   BarChart3,
-  Users,
-  Sparkles,
   CheckCircle2,
   Cpu,
   Lock,
+  ShieldCheck,
+  Sparkles,
+  Users,
 } from "lucide-react";
-import SEO from "../components/common/SEO";
+import AnimatedCounter from "../components/common/AnimatedCounter";
 import Badge from "../components/common/Badge";
 import SectionHeading from "../components/common/SectionHeading";
-import AnimatedCounter from "../components/common/AnimatedCounter";
-import ProcessTimeline from "../components/home/ProcessTimeline";
-import FAQSection from "../components/home/FAQSection";
+import SEO from "../components/common/SEO";
 import CTASection from "../components/home/CTASection";
+import FAQSection from "../components/home/FAQSection";
+import ProcessTimeline from "../components/home/ProcessTimeline";
 import { companyData } from "../data/companyData";
 
 const aboutFaqs = [
   {
-    question: "How is the engineering team structured for each client engagement?",
+    question:
+      "How is the engineering team structured for each client engagement?",
     answer:
       "Every project is led by a dedicated Technical Lead who acts as the primary architectural point of contact. Supporting them are senior frontend, backend, or mobile developers matched specifically to your technology stack. We never assign junior engineers without senior supervision.",
   },
   {
-    question: "Do you sign non-disclosure agreements (NDAs) before discussing project details?",
+    question:
+      "Do you sign non-disclosure agreements (NDAs) before discussing project details?",
     answer:
       "Yes. We prioritize intellectual property protection from the very first conversation. We execute mutual NDAs prior to reviewing proprietary specifications, database schemas, or business roadmaps.",
   },
   {
-    question: "How do you accommodate different time zones and ensure smooth communication?",
+    question:
+      "How do you accommodate different time zones and ensure smooth communication?",
     answer:
       "Our engineering teams maintain core 4-to-6 hour overlapping windows with clients across North America, Europe, and Asia-Pacific. We combine real-time synchronous standups with rich asynchronous updates via Slack, Teams, and recorded video walkthroughs.",
   },
   {
-    question: "Can our existing in-house developers collaborate in the same repositories?",
+    question:
+      "Can our existing in-house developers collaborate in the same repositories?",
     answer:
       "Absolutely. We frequently operate as an integrated pod alongside existing engineering teams. We follow your Git branch protection policies, PR review standards, and CI/CD pipelines seamlessly.",
   },
   {
-    question: "How do you handle scope modifications or evolving product requirements?",
+    question:
+      "How do you handle scope modifications or evolving product requirements?",
     answer:
       "We operate in bi-weekly agile sprint cadences. If requirements evolve, we adjust the upcoming sprint backlog collaboratively. Features of equivalent complexity can be swapped into the sprint without incurring contractual friction.",
   },
@@ -47,22 +52,26 @@ const aboutFaqs = [
 const principles = [
   {
     title: "Zero-Jank Engineering",
-    description: "Every UI interaction, gesture, and transition is engineered to maintain a fluid 60/120fps with zero layout shifting.",
+    description:
+      "Every UI interaction, gesture, and transition is engineered to maintain a fluid 60/120fps with zero layout shifting.",
     icon: Sparkles,
   },
   {
     title: "100% Client Code Ownership",
-    description: "All repositories, cloud infrastructure scripts, and design tokens belong entirely to your company from day one.",
+    description:
+      "All repositories, cloud infrastructure scripts, and design tokens belong entirely to your company from day one.",
     icon: Lock,
   },
   {
     title: "No Middlemen, Direct Access",
-    description: "Collaborate directly with senior frontend, backend, and mobile architects in real-time communication channels.",
+    description:
+      "Collaborate directly with senior frontend, backend, and mobile architects in real-time communication channels.",
     icon: Users,
   },
   {
     title: "Maintainable Type Safety",
-    description: "We enforce strict TypeScript typing and deterministic API contracts to eliminate entire categories of production bugs.",
+    description:
+      "We enforce strict TypeScript typing and deterministic API contracts to eliminate entire categories of production bugs.",
     icon: Cpu,
   },
 ];
@@ -71,17 +80,20 @@ const teamHighlights = [
   {
     name: "Engineering Leadership",
     role: "Senior Systems Architects & Tech Leads",
-    description: "Decades of combined experience designing high-throughput distributed microservices and enterprise web applications.",
+    description:
+      "Decades of combined experience designing high-throughput distributed microservices and enterprise web applications.",
   },
   {
     name: "Mobile Specialists",
     role: "Native Swift, Kotlin & Cross-Platform Leads",
-    description: "Dedicated mobile engineers specializing in offline caching, Bluetooth hardware sync, and App Store guidelines.",
+    description:
+      "Dedicated mobile engineers specializing in offline caching, Bluetooth hardware sync, and App Store guidelines.",
   },
   {
     name: "Frontend & Motion Designers",
     role: "Design System & Performance Engineers",
-    description: "Obsessed with micro-interactions, Core Web Vitals, accessible semantic structure, and responsive fluidity.",
+    description:
+      "Obsessed with micro-interactions, Core Web Vitals, accessible semantic structure, and responsive fluidity.",
   },
 ];
 
@@ -105,8 +117,9 @@ export default function About() {
                 <span className="text-gradient-brand">Digital Business</span>
               </h1>
               <p className="text-sm sm:text-base lg:text-lg text-[#59647D] leading-relaxed">
-                We are a technology partner built on engineering rigor, transparent collaboration,
-                and a commitment to building software that powers real business growth.
+                We are a technology partner built on engineering rigor,
+                transparent collaboration, and a commitment to building software
+                that powers real business growth.
               </p>
             </div>
 
@@ -124,7 +137,7 @@ export default function About() {
         {/* Mission & Story Narrative */}
         <section className="py-12 sm:py-16 bg-[#F8FAFD] border-t border-slate-100">
           <div className="mx-auto w-full max-w-[105rem] px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto space-y-6">
+            <div className="max-w-6xl mx-auto space-y-6">
               <div className="text-center">
                 <Badge variant="cyan" className="mb-2">
                   OUR MISSION
@@ -136,20 +149,25 @@ export default function About() {
 
               <div className="prose prose-slate text-xs sm:text-sm text-[#59647D] leading-relaxed space-y-3.5">
                 <p>
-                  In a software industry cluttered with superficial prototypes and hype-driven cycles,
-                  Techneest was established with a clear thesis: ambitious businesses deserve technology partners
-                  who take engineering craftsmanship seriously.
+                  In a software industry cluttered with superficial prototypes
+                  and hype-driven cycles, Techneest was established with a clear
+                  thesis: ambitious businesses deserve technology partners who
+                  take engineering craftsmanship seriously.
                 </p>
                 <p>
-                  Whether designing a high-conversion web platform, crafting a consumer mobile app,
-                  or developing a multi-tenant enterprise system, we reject the false dilemma between speed
-                  and code quality. By utilizing proven architectures, strict type systems, and automated testing,
-                  we deliver fast initial releases while ensuring that your codebase remains a sustainable asset
-                  for years to come.
+                  Whether designing a high-conversion web platform, crafting a
+                  consumer mobile app, or developing a multi-tenant enterprise
+                  system, we reject the false dilemma between speed and code
+                  quality. By utilizing proven architectures, strict type
+                  systems, and automated testing, we deliver fast initial
+                  releases while ensuring that your codebase remains a
+                  sustainable asset for years to come.
                 </p>
                 <p>
-                  We do not outsource work to anonymous brokers. When you partner with Techneest, you communicate
-                  directly with senior software architects who understand both your technical roadmap and your commercial objectives.
+                  We do not outsource work to anonymous brokers. When you
+                  partner with Techneest, you communicate directly with senior
+                  software architects who understand both your technical roadmap
+                  and your commercial objectives.
                 </p>
               </div>
 

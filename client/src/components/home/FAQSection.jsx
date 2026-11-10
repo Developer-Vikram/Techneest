@@ -75,7 +75,6 @@ export default function FAQSection({
     }
 
     setIsSubmitting(true);
-    // Simulate brief client-side submission with realistic response
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -89,7 +88,7 @@ export default function FAQSection({
   };
 
   return (
-    <section id={id} className="py-12 sm:py-16 bg-white border-t border-slate-100 relative">
+    <section id={id} className="py-10 sm:py-14 lg:py-16 bg-white border-t border-slate-100 relative overflow-hidden">
       <div className="mx-auto w-full max-w-[105rem] px-4 sm:px-6 lg:px-8">
         <div data-aos="fade-up">
           <SectionHeading
@@ -101,13 +100,14 @@ export default function FAQSection({
               "Everything you need to know about our engineering approach, collaboration model, and delivery standards."
             }
             align="center"
-            className="mb-10 sm:mb-12"
+            className="mb-8 sm:mb-10 lg:mb-12"
           />
         </div>
 
         {showContactForm ? (
           /* 2-Column Layout for Homepage */
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start">
+            
             {/* Left Column: Accordion FAQs */}
             <div className="lg:col-span-7 space-y-3">
               {faqs.map((faq, index) => {
@@ -118,7 +118,7 @@ export default function FAQSection({
                 return (
                   <div
                     key={faq.question || index}
-                    className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                    className={`rounded-xl sm:rounded-2xl border transition-all duration-200 overflow-hidden ${
                       isOpen
                         ? "border-blue-300 bg-blue-50/30 shadow-sm ring-1 ring-blue-100"
                         : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-xs"
@@ -128,13 +128,13 @@ export default function FAQSection({
                       type="button"
                       id={buttonId}
                       onClick={() => toggleAccordion(index)}
-                      className="w-full flex items-center justify-between p-4 sm:p-5 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-electric focus-visible:ring-inset transition-colors"
+                      className="w-full flex items-center justify-between p-3.5 sm:p-5 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-electric focus-visible:ring-inset transition-colors"
                       aria-expanded={isOpen}
                       aria-controls={panelId}
                     >
-                      <div className="flex items-center gap-3 pr-4">
+                      <div className="flex items-start sm:items-center gap-2.5 sm:gap-3 pr-3 sm:pr-4">
                         <span
-                          className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold transition-colors ${
+                          className={`w-6 h-6 sm:w-7 sm:h-7 rounded-md sm:rounded-lg flex items-center justify-center shrink-0 text-[10px] sm:text-xs font-bold transition-colors mt-0.5 sm:mt-0 ${
                             isOpen
                               ? "bg-brand-electric text-white"
                               : "bg-slate-100 text-slate-500"
@@ -142,19 +142,19 @@ export default function FAQSection({
                         >
                           {index + 1 < 10 ? `0${index + 1}` : index + 1}
                         </span>
-                        <span className="text-sm sm:text-base font-bold text-[#0B1028] leading-snug">
+                        <span className="text-[13px] sm:text-base font-bold text-[#0B1028] leading-snug">
                           {faq.question}
                         </span>
                       </div>
 
                       <div
-                        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 pointer-events-none transition-transform duration-300 ${
+                        className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center shrink-0 pointer-events-none transition-transform duration-300 ${
                           isOpen
                             ? "bg-brand-electric text-white rotate-180"
                             : "bg-slate-100 text-slate-500"
                         }`}
                       >
-                        <ChevronDown className="w-3.5 h-3.5" />
+                        <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                       </div>
                     </button>
 
@@ -170,7 +170,7 @@ export default function FAQSection({
                           transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="px-5 sm:px-6 pb-5 pt-2 text-xs sm:text-sm text-[#59647D] leading-relaxed border-t border-slate-100">
+                          <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-1 sm:pt-2 text-[11px] sm:text-sm text-[#59647D] leading-relaxed border-t border-slate-100">
                             <p>{faq.answer}</p>
                           </div>
                         </motion.div>
@@ -181,25 +181,24 @@ export default function FAQSection({
               })}
             </div>
 
-            {/* Right Column: "Still have questions? Let's talk" Form */}
-            <div className="lg:col-span-5 lg:sticky lg:top-24">
-              <div className="rounded-3xl bg-[#0B1028] text-white p-6 sm:p-8 border border-white/10 shadow-xl relative overflow-hidden">
-                {/* Glow Accents */}
+            {/* Right Column: Form */}
+            <div className="lg:col-span-5 lg:sticky lg:top-24 mt-6 lg:mt-0">
+              <div className="rounded-2xl sm:rounded-3xl bg-[#0B1028] text-white p-5 sm:p-8 border border-white/10 shadow-xl relative overflow-hidden">
+                {/* Glow */}
                 <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-brand-electric/25 to-transparent pointer-events-none rounded-tr-3xl -z-0" />
-                <div className="absolute bottom-0 left-0 w-36 h-36 bg-gradient-to-tr from-brand-cyan/20 to-transparent pointer-events-none rounded-bl-3xl -z-0" />
-
+                
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-brand-cyan text-[11px] font-bold tracking-wider uppercase border border-white/10">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/10 text-brand-cyan text-[10px] sm:text-[11px] font-bold tracking-wider uppercase border border-white/10">
                       <Sparkles className="w-3 h-3" />
                       Direct Inquiry
                     </span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
+                  <h3 className="text-lg sm:text-2xl font-bold font-display text-white">
                     Still have questions? Let's talk
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
+                  <p className="text-[11px] sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
                     Have a unique requirement or want an engineer's perspective? Send us your note and a technical lead will respond within 24 hours.
                   </p>
 
@@ -207,32 +206,32 @@ export default function FAQSection({
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="mt-6 p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3"
+                      className="mt-5 sm:mt-6 p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3"
                     >
-                      <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
-                        <CheckCircle2 className="w-6 h-6" />
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
+                        <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6" />
                       </div>
-                      <h4 className="text-base font-bold text-white">
+                      <h4 className="text-sm sm:text-base font-bold text-white">
                         Inquiry Received!
                       </h4>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-[11px] sm:text-xs text-slate-300 leading-relaxed">
                         Thank you for reaching out. A senior software engineer will review your inquiry and follow up within 24 business hours.
                       </p>
                       <button
                         type="button"
                         onClick={() => setIsSubmitted(false)}
-                        className="text-xs font-semibold text-brand-cyan hover:underline pt-2 cursor-pointer"
+                        className="text-[11px] sm:text-xs font-semibold text-brand-cyan hover:underline pt-2 cursor-pointer"
                       >
                         Send another question &rarr;
                       </button>
                     </motion.div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                    <form onSubmit={handleSubmit} className="mt-5 sm:mt-6 space-y-3.5 sm:space-y-4">
                       {/* Name */}
                       <div>
                         <label
                           htmlFor="faq-form-name"
-                          className="block text-xs font-semibold text-slate-200 mb-1"
+                          className="block text-[11px] sm:text-xs font-semibold text-slate-200 mb-1"
                         >
                           Your Name <span className="text-rose-400">*</span>
                         </label>
@@ -243,14 +242,14 @@ export default function FAQSection({
                           value={formData.name}
                           onChange={handleInputChange}
                           placeholder="Jane Doe"
-                          className={`w-full px-3.5 py-2.5 rounded-xl bg-white/5 border text-sm text-white placeholder-slate-400 focus:outline-none transition-all ${
+                          className={`w-full px-3 sm:px-3.5 py-2.5 rounded-lg sm:rounded-xl bg-white/5 border text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none transition-all ${
                             formErrors.name
                               ? "border-rose-500 ring-1 ring-rose-500"
                               : "border-white/15 focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan"
                           }`}
                         />
                         {formErrors.name && (
-                          <p className="mt-1 text-[11px] text-rose-400 flex items-center gap-1">
+                          <p className="mt-1 text-[10px] sm:text-[11px] text-rose-400 flex items-center gap-1">
                             <AlertCircle className="w-3 h-3" />
                             {formErrors.name}
                           </p>
@@ -261,7 +260,7 @@ export default function FAQSection({
                       <div>
                         <label
                           htmlFor="faq-form-email"
-                          className="block text-xs font-semibold text-slate-200 mb-1"
+                          className="block text-[11px] sm:text-xs font-semibold text-slate-200 mb-1"
                         >
                           Work Email <span className="text-rose-400">*</span>
                         </label>
@@ -272,14 +271,14 @@ export default function FAQSection({
                           value={formData.email}
                           onChange={handleInputChange}
                           placeholder="jane@company.com"
-                          className={`w-full px-3.5 py-2.5 rounded-xl bg-white/5 border text-sm text-white placeholder-slate-400 focus:outline-none transition-all ${
+                          className={`w-full px-3 sm:px-3.5 py-2.5 rounded-lg sm:rounded-xl bg-white/5 border text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none transition-all ${
                             formErrors.email
                               ? "border-rose-500 ring-1 ring-rose-500"
                               : "border-white/15 focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan"
                           }`}
                         />
                         {formErrors.email && (
-                          <p className="mt-1 text-[11px] text-rose-400 flex items-center gap-1">
+                          <p className="mt-1 text-[10px] sm:text-[11px] text-rose-400 flex items-center gap-1">
                             <AlertCircle className="w-3 h-3" />
                             {formErrors.email}
                           </p>
@@ -290,7 +289,7 @@ export default function FAQSection({
                       <div>
                         <label
                           htmlFor="faq-form-service"
-                          className="block text-xs font-semibold text-slate-200 mb-1"
+                          className="block text-[11px] sm:text-xs font-semibold text-slate-200 mb-1"
                         >
                           Service of Interest
                         </label>
@@ -299,7 +298,7 @@ export default function FAQSection({
                           name="service"
                           value={formData.service}
                           onChange={handleInputChange}
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#141D3B] border border-white/15 text-sm text-white focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all cursor-pointer"
+                          className="w-full px-3 sm:px-3.5 py-2.5 rounded-lg sm:rounded-xl bg-[#141D3B] border border-white/15 text-xs sm:text-sm text-white focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all cursor-pointer"
                         >
                           <option value="Web Application Development">Web Application Development</option>
                           <option value="Mobile App Development">Mobile App Development</option>
@@ -313,7 +312,7 @@ export default function FAQSection({
                       <div>
                         <label
                           htmlFor="faq-form-message"
-                          className="block text-xs font-semibold text-slate-200 mb-1"
+                          className="block text-[11px] sm:text-xs font-semibold text-slate-200 mb-1"
                         >
                           Your Question or Project Scope <span className="text-rose-400">*</span>
                         </label>
@@ -324,58 +323,58 @@ export default function FAQSection({
                           value={formData.message}
                           onChange={handleInputChange}
                           placeholder="Briefly describe what you're looking to build or ask..."
-                          className={`w-full px-3.5 py-2.5 rounded-xl bg-white/5 border text-sm text-white placeholder-slate-400 focus:outline-none transition-all resize-none ${
+                          className={`w-full px-3 sm:px-3.5 py-2.5 rounded-lg sm:rounded-xl bg-white/5 border text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none transition-all resize-none ${
                             formErrors.message
                               ? "border-rose-500 ring-1 ring-rose-500"
                               : "border-white/15 focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan"
                           }`}
                         />
                         {formErrors.message && (
-                          <p className="mt-1 text-[11px] text-rose-400 flex items-center gap-1">
+                          <p className="mt-1 text-[10px] sm:text-[11px] text-rose-400 flex items-center gap-1">
                             <AlertCircle className="w-3 h-3" />
                             {formErrors.message}
                           </p>
                         )}
                       </div>
 
-                      {/* Submit Button */}
+                      {/* Submit */}
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="btn-liquid-cyan w-full py-3 px-5 rounded-xl bg-gradient-to-r from-brand-electric to-brand-cyan text-white text-xs sm:text-sm font-bold shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 transition-all hover:scale-[1.01] active:scale-[0.99]"
+                        className="w-full py-2.5 sm:py-3 px-4 sm:px-5 rounded-lg sm:rounded-xl bg-gradient-to-r from-brand-electric to-brand-cyan text-white text-[11px] sm:text-sm font-bold shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 transition-all hover:scale-[1.01] active:scale-[0.99]"
                       >
                         {isSubmitting ? (
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                         ) : (
                           <>
-                            <span>Send Inquiry to Engineering Lead</span>
-                            <Send className="w-4 h-4" />
+                            <span className="truncate">Send Inquiry to Engineering Lead</span>
+                            <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
                           </>
                         )}
                       </button>
                     </form>
                   )}
 
-                  {/* Quick Direct Contacts */}
-                  <div className="mt-6 pt-5 border-t border-white/10 grid grid-cols-2 gap-3 text-xs">
+                  {/* Contacts */}
+                  <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-white/10 flex flex-col xs:flex-row gap-3 sm:gap-4 text-[10px] sm:text-xs">
                     <a
-                      href="mailto:hello@techneest.com"
-                      className="flex items-center gap-2 text-slate-300 hover:text-brand-cyan transition-colors"
+                      href="mailto:Manager@techneest.com"
+                      className="flex items-center gap-1.5 sm:gap-2 text-slate-300 hover:text-brand-cyan transition-colors"
                     >
                       <Mail className="w-3.5 h-3.5 text-brand-cyan shrink-0" />
-                      <span className="truncate">hello@techneest.com</span>
+                      <span className="truncate">Manager@techneest.com</span>
                     </a>
                     <a
-                      href="tel:+15553894021"
-                      className="flex items-center gap-2 text-slate-300 hover:text-brand-cyan transition-colors"
+                      href="tel:+918595973101"
+                      className="flex items-center gap-1.5 sm:gap-2 text-slate-300 hover:text-brand-cyan transition-colors"
                     >
                       <Phone className="w-3.5 h-3.5 text-brand-cyan shrink-0" />
-                      <span className="truncate">+1 (555) 389-4021</span>
+                      <span>+91 8595973101</span>
                     </a>
                   </div>
 
-                  <div className="mt-3 flex items-center gap-1.5 text-[11px] text-slate-400">
-                    <Clock className="w-3 h-3 text-emerald-400 shrink-0" />
+                  <div className="mt-3 flex items-start sm:items-center gap-1.5 text-[10px] sm:text-[11px] text-slate-400">
+                    <Clock className="w-3 h-3 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
                     <span>Average reply time: under 4 hours during business days</span>
                   </div>
                 </div>
@@ -383,7 +382,7 @@ export default function FAQSection({
             </div>
           </div>
         ) : (
-          /* Single Column Centered Layout for Service Pages */
+          /* Single Column Centered Layout */
           <>
             <div className="max-w-3xl mx-auto space-y-3">
               {faqs.map((faq, index) => {
@@ -394,7 +393,7 @@ export default function FAQSection({
                 return (
                   <div
                     key={faq.question || index}
-                    className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                    className={`rounded-xl sm:rounded-2xl border transition-all duration-200 overflow-hidden ${
                       isOpen
                         ? "border-blue-300 bg-blue-50/30 shadow-sm ring-1 ring-blue-100"
                         : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-xs"
@@ -404,13 +403,13 @@ export default function FAQSection({
                       type="button"
                       id={buttonId}
                       onClick={() => toggleAccordion(index)}
-                      className="w-full flex items-center justify-between p-4 sm:p-5 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-electric focus-visible:ring-inset transition-colors"
+                      className="w-full flex items-center justify-between p-3.5 sm:p-5 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-electric focus-visible:ring-inset transition-colors"
                       aria-expanded={isOpen}
                       aria-controls={panelId}
                     >
-                      <div className="flex items-center gap-3 pr-4">
+                      <div className="flex items-start sm:items-center gap-2.5 sm:gap-3 pr-3 sm:pr-4">
                         <span
-                          className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold transition-colors ${
+                          className={`w-6 h-6 sm:w-7 sm:h-7 rounded-md sm:rounded-lg flex items-center justify-center shrink-0 text-[10px] sm:text-xs font-bold transition-colors mt-0.5 sm:mt-0 ${
                             isOpen
                               ? "bg-brand-electric text-white"
                               : "bg-slate-100 text-slate-500"
@@ -418,19 +417,19 @@ export default function FAQSection({
                         >
                           {index + 1 < 10 ? `0${index + 1}` : index + 1}
                         </span>
-                        <span className="text-sm sm:text-base font-bold text-[#0B1028] leading-snug">
+                        <span className="text-[13px] sm:text-base font-bold text-[#0B1028] leading-snug">
                           {faq.question}
                         </span>
                       </div>
 
                       <div
-                        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 pointer-events-none transition-transform duration-300 ${
+                        className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center shrink-0 pointer-events-none transition-transform duration-300 ${
                           isOpen
                             ? "bg-brand-electric text-white rotate-180"
                             : "bg-slate-100 text-slate-500"
                         }`}
                       >
-                        <ChevronDown className="w-3.5 h-3.5" />
+                        <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                       </div>
                     </button>
 
@@ -446,7 +445,7 @@ export default function FAQSection({
                           transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="px-5 sm:px-6 pb-5 pt-2 text-xs sm:text-sm text-[#59647D] leading-relaxed border-t border-slate-100">
+                          <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-1 sm:pt-2 text-[11px] sm:text-sm text-[#59647D] leading-relaxed border-t border-slate-100">
                             <p>{faq.answer}</p>
                           </div>
                         </motion.div>
@@ -458,23 +457,23 @@ export default function FAQSection({
             </div>
 
             {/* Quick Help Card */}
-            <div className="mt-10 max-w-3xl mx-auto p-4 sm:p-5 rounded-2xl bg-[#F8FAFD] border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-100 text-brand-electric flex items-center justify-center shrink-0">
-                  <HelpCircle className="w-5 h-5" />
+            <div className="mt-8 sm:mt-10 max-w-3xl mx-auto p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-[#F8FAFD] border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left">
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-blue-100 text-brand-electric flex items-center justify-center shrink-0">
+                  <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
                   <p className="text-xs sm:text-sm font-bold text-[#0B1028]">
                     Have a unique technical question?
                   </p>
-                  <p className="text-xs text-[#59647D]">
+                  <p className="text-[11px] sm:text-xs text-[#59647D] mt-0.5">
                     Our software architects will review your project requirements directly.
                   </p>
                 </div>
               </div>
               <a
                 href="/contact"
-                className="text-xs sm:text-sm font-bold text-brand-electric hover:underline shrink-0"
+                className="text-xs sm:text-sm font-bold text-brand-electric hover:underline shrink-0 mt-2 sm:mt-0"
               >
                 Ask an Engineer &rarr;
               </a>

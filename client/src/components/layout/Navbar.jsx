@@ -53,17 +53,16 @@ export default function Navbar() {
   const dropdownRef = useRef(null);
   const location = useLocation();
 
-  // Scroll listener for sticky navbar styling
+  // Scroll listener
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scrolling when mobile drawer is open
+  // Body scroll lock on mobile menu
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -75,21 +74,19 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Click outside and escape key listener for dropdown and mobile drawer
+  // Click outside & Escape key
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setServicesDropdownOpen(false);
       }
     };
-
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setServicesDropdownOpen(false);
         setMobileMenuOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
@@ -112,45 +109,52 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* =========================================================================
-          TOP CONTACT STRIP (Phone, Email, Hours - Compact & Elegant)
+          TOP CONTACT STRIP — iPad Fix (Address aur Contact info shrink kiya)
           ========================================================================= */}
       <div
-        className={`bg-[#0B1028] text-slate-300 text-[11px] sm:text-xs border-b border-white/10 transition-all duration-300 ${
-          isScrolled ? "hidden sm:block py-1 opacity-90" : "py-1.5 opacity-100"
+        className={`bg-[#0B1028] text-slate-300 text-[10px] md:text-xs border-b border-white/10 transition-all duration-300 ease-in-out overflow-hidden ${
+          isScrolled
+            ? "max-h-0 py-0 opacity-0 border-b-0"
+            : "max-h-12 py-1.5 opacity-100"
         }`}
       >
         <div className="mx-auto w-full max-w-[105rem] px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Left: Contact Phone & Email Links */}
-            <div className="flex items-center gap-4 sm:gap-6">
+          <div className="flex items-center justify-between gap-4">
+            
+            {/* Left: Contact Info - iPad par text chhota kiya */}
+            <div className="flex items-center gap-3 sm:gap-5 md:gap-6 flex-wrap">
               <a
-                href="tel:+15553894021"
-                className="flex items-center gap-1.5 hover:text-brand-cyan transition-colors"
-                aria-label="Direct Phone Line: +1 (555) 389-4021"
+                href="tel:+918595973101"
+                className="flex items-center gap-1.5 hover:text-brand-cyan transition-colors whitespace-nowrap"
+                aria-label="Direct Phone Line"
               >
                 <Phone className="w-3 h-3 text-brand-cyan shrink-0" />
-                <span className="font-medium">+1 (555) 389-4021</span>
+                <span className="font-medium">+91 8595973101</span>
               </a>
 
               <a
-                href="mailto:hello@techneest.com"
-                className="flex items-center gap-1.5 hover:text-brand-cyan transition-colors"
-                aria-label="Email Inquiry: hello@techneest.com"
+                href="mailto:Manager@techneest.com"
+                className="flex items-center gap-1.5 hover:text-brand-cyan transition-colors whitespace-nowrap"
+                aria-label="Email Inquiry"
               >
                 <Mail className="w-3 h-3 text-brand-electric shrink-0" />
-                <span className="font-medium">hello@techneest.com</span>
+                <span className="font-medium">Manager@techneest.com</span>
               </a>
             </div>
 
-            {/* Right: Location & Response SLA (Hidden on narrow screens) */}
-            <div className="hidden md:flex items-center gap-5 text-slate-400">
-              <span className="flex items-center gap-1.5">
-                <Clock className="w-3 h-3 text-emerald-400" />
-                <span>Response SLA: &lt; 24h</span>
+            {/* Right: SLA & Address (iPad Air/Mini par address truncate hoga) */}
+            <div className="hidden md:flex items-center gap-4 lg:gap-5 text-slate-400">
+              <span className="flex items-center gap-1.5 whitespace-nowrap">
+                <Clock className="w-3 h-3 text-emerald-400 shrink-0" />
+                <span className="hidden lg:inline">Response SLA: &lt; 24h</span>
+                <span className="lg:hidden">SLA: &lt; 24h</span>
               </span>
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-3 h-3 text-brand-violet" />
-                <span>San Francisco, CA</span>
+              <span className="flex items-center gap-1.5 min-w-0">
+                <MapPin className="w-3 h-3 text-brand-violet shrink-0" />
+                {/* Address iPad par truncate hoga, Desktop par full dikhega */}
+                <span className="truncate max-w-[200px] lg:max-w-none block">
+                  T3-331 Golden I, Tech Zone 4, Tower 3, Greater Noida
+                </span>
               </span>
             </div>
           </div>
@@ -158,34 +162,35 @@ export default function Navbar() {
       </div>
 
       {/* =========================================================================
-          MAIN NAVIGATION BAR (Sticky Glassmorphic Container)
+          MAIN NAVIGATION BAR
           ========================================================================= */}
       <div
         className={`transition-all duration-300 ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-100 py-2 sm:py-2.5"
-            : "bg-white/90 backdrop-blur-sm border-b border-slate-100/70 py-2.5 sm:py-3"
+            ? "bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-100 py-2 lg:py-2.5"
+            : "bg-white/90 backdrop-blur-sm border-b border-slate-100/70 py-2.5 lg:py-3"
         }`}
       >
         <div className="mx-auto w-full max-w-[105rem] px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
+            
             {/* Logo */}
             <Link
               to="/"
               onClick={closeAllMenus}
-              className="flex items-center gap-2.5 sm:gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-electric rounded-xl py-0.5 px-1"
+              className="flex items-center gap-2 sm:gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-electric rounded-xl py-0.5 px-1 shrink-0"
               aria-label="Techneest Homepage"
             >
               <img
                 src={techneestLogo}
                 alt="Techneest Logo"
-                className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-7 sm:h-8 lg:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
               <div className="flex flex-col">
-                <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-[#0B1028] font-display leading-none">
+                <span className="font-extrabold text-lg sm:text-xl lg:text-2xl tracking-tight text-[#0B1028] font-display leading-none">
                   Tech<span className="text-brand-electric">neest</span>
                 </span>
-                <span className="text-[10px] tracking-wider font-semibold uppercase text-[#59647D] mt-0.5">
+                <span className="text-[9px] sm:text-[10px] tracking-wider font-semibold uppercase text-[#59647D] mt-0.5">
                   Software Engineering
                 </span>
               </div>
@@ -196,7 +201,6 @@ export default function Navbar() {
               aria-label="Main Navigation"
               className="hidden lg:flex items-center gap-1 xl:gap-1.5"
             >
-              {/* Home */}
               <NavLink
                 to="/"
                 end
@@ -235,7 +239,9 @@ export default function Navbar() {
                   <span>Services</span>
                   <ChevronDown
                     className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      servicesDropdownOpen ? "rotate-180 text-brand-electric" : "text-slate-400"
+                      servicesDropdownOpen
+                        ? "rotate-180 text-brand-electric"
+                        : "text-slate-400"
                     }`}
                   />
                   {isServicesActive && (
@@ -291,7 +297,8 @@ export default function Navbar() {
                             },
                           };
 
-                          const currentColors = colorMap[service.color] || colorMap.blue;
+                          const currentColors =
+                            colorMap[service.color] || colorMap.blue;
 
                           return (
                             <Link
@@ -337,7 +344,9 @@ export default function Navbar() {
                       </div>
 
                       <div className="mt-2 pt-2 border-t border-slate-100 px-3 py-1 flex items-center justify-between text-xs">
-                        <span className="text-[#59647D]">Need a tailored architecture?</span>
+                        <span className="text-[#59647D]">
+                          Need a tailored architecture?
+                        </span>
                         <Link
                           to="/contact"
                           onClick={closeAllMenus}
@@ -351,7 +360,6 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              {/* Work */}
               <NavLink
                 to="/work"
                 className={({ isActive }) =>
@@ -368,7 +376,6 @@ export default function Navbar() {
                 )}
               </NavLink>
 
-              {/* About */}
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
@@ -385,7 +392,6 @@ export default function Navbar() {
                 )}
               </NavLink>
 
-              {/* Insights */}
               <NavLink
                 to="/insights"
                 className={({ isActive }) =>
@@ -403,7 +409,7 @@ export default function Navbar() {
               </NavLink>
             </nav>
 
-            {/* Right Desktop CTA */}
+            {/* Right Desktop CTA (Sirf Large screens par) */}
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 to="/contact"
@@ -415,7 +421,7 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Menu Toggle Button */}
+            {/* 👈 Mobile & iPad Menu Toggle (Lg se pehle tak visible) */}
             <div className="flex lg:hidden items-center gap-2">
               <button
                 type="button"
@@ -424,7 +430,7 @@ export default function Navbar() {
                 aria-label="Open mobile navigation menu"
                 aria-expanded={mobileMenuOpen}
               >
-                <Menu className="w-5 h-5" />
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
           </div>
@@ -432,12 +438,11 @@ export default function Navbar() {
       </div>
 
       {/* =========================================================================
-          MOBILE SLIDE-IN DRAWER FROM THE RIGHT (Strict Requirement)
+          MOBILE SLIDE-IN DRAWER
           ========================================================================= */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <div className="fixed inset-0 z-50 lg:hidden">
-            {/* Backdrop Blur Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -448,15 +453,13 @@ export default function Navbar() {
               aria-hidden="true"
             />
 
-            {/* Right Slide-in Panel */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 280 }}
-              className="fixed top-0 right-0 bottom-0 w-[86vw] max-w-[360px] bg-white shadow-2xl z-50 flex flex-col justify-between overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-[86vw] max-w-[380px] bg-white shadow-2xl z-50 flex flex-col justify-between overflow-y-auto"
             >
-              {/* Drawer Top Header with Logo & Close Button */}
               <div>
                 <div className="flex items-center justify-between p-4 border-b border-slate-100 bg-[#F8FAFD]">
                   <Link
@@ -484,7 +487,6 @@ export default function Navbar() {
                   </button>
                 </div>
 
-                {/* Navigation Links */}
                 <div className="p-4 space-y-1.5">
                   <NavLink
                     to="/"
@@ -501,7 +503,6 @@ export default function Navbar() {
                     <span>Home</span>
                   </NavLink>
 
-                  {/* Services Accordion Submenu */}
                   <div className="rounded-xl border border-slate-100 overflow-hidden my-1">
                     <button
                       type="button"
@@ -521,7 +522,9 @@ export default function Navbar() {
                       </span>
                       <ChevronDown
                         className={`w-4 h-4 transition-transform duration-200 ${
-                          mobileServicesOpen ? "rotate-180 text-brand-electric" : "text-slate-400"
+                          mobileServicesOpen
+                            ? "rotate-180 text-brand-electric"
+                            : "text-slate-400"
                         }`}
                       />
                     </button>
@@ -603,7 +606,6 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Drawer Bottom Action & Contact Info */}
               <div className="p-4 border-t border-slate-100 bg-[#F8FAFD] space-y-3">
                 <Link
                   to="/contact"
@@ -614,20 +616,20 @@ export default function Navbar() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
-                <div className="pt-2 text-[11px] text-slate-500 space-y-1.5 border-t border-slate-200">
+                <div className="pt-2 text-[11px] text-slate-500 space-y-2 border-t border-slate-200">
                   <a
-                    href="tel:+15553894021"
+                    href="tel:+918595973101"
                     className="flex items-center gap-2 text-slate-700 hover:text-brand-electric"
                   >
                     <Phone className="w-3.5 h-3.5 text-brand-cyan" />
-                    <span>+1 (555) 389-4021</span>
+                    <span>+91 8595973101</span>
                   </a>
                   <a
-                    href="mailto:hello@techneest.com"
+                    href="mailto:Manager@techneest.com"
                     className="flex items-center gap-2 text-slate-700 hover:text-brand-electric"
                   >
                     <Mail className="w-3.5 h-3.5 text-brand-electric" />
-                    <span>hello@techneest.com</span>
+                    <span>Manager@techneest.com</span>
                   </a>
                 </div>
               </div>
